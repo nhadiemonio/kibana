@@ -1,0 +1,29 @@
+---
+  - name: import elasticsearch PGP key
+    apt_key:
+      url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      state: present
+
+  - name: enable elasticsearch repository
+    apt_repository:
+      repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+      state: present
+
+  - name: addnginx pub key
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: ABF5BD827BD9BF62
+      
+  - name: enable nginx repository
+    apt_repository:
+      repo: deb http://nginx.org/packages/ubuntu/ bionic nginx
+      state: present
+
+  - name: install packages
+    apt:
+      name: [
+        "elasticsearch",
+        "default-jdk",
+        "nginx"
+        ]
+      state: latest
