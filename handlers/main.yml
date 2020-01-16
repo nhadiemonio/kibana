@@ -1,0 +1,16 @@
+---
+  - name: start kibana
+    systemd:
+      name: kibana
+      enabled: yes
+      state: started
+
+  - name: restart kibana
+    systemd:
+      name: kibana
+      state: restarted
+
+  - name: stop kibana
+    systemd:
+      name: kibana
+      state: stopped
